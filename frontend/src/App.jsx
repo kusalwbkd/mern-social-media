@@ -19,6 +19,8 @@ import { action as profilAction } from './pages/ProfilePage'
 import { action as EditPostPageAction } from './pages/EditPostPage'
 
 import { store } from './store'
+import Error from './pages/Error'
+import { ErrorElement } from './components'
 
 
 const App = () => {
@@ -27,43 +29,55 @@ const App = () => {
     {
       path:'/',
       element:<Signin/>,
-      action:signInAction(store)
+      action:signInAction(store),
+      errorElement:<Error/>
       
     
     },
     {
       path:'signup',
       element:<Signup/>,
-      action:signUpAction
+      action:signUpAction,
+      errorElement:<Error/>
     },
     {
       path:'home',
       element:<Home/>,
       loader:homeLoader,
+      errorElement:<Error/>,
       children:[
         {
           index:true,
           element:<Landing/>,
           loader:landingLoader,
-          action:landingAction
+          action:landingAction,
+          errorElement:<ErrorElement/>
         },
         
         {
           path:'profile/:username',
           element:<ProfilePage/>,
           loader:ProfileLoader,
-          action:profilAction
+          action:profilAction,
+          errorElement:<ErrorElement/>
+
         },
         {
           path:'edit-post/:id',
           element:<EditPostPage/>,
           loader:editProfileLoader,
-          action:EditPostPageAction
+          action:EditPostPageAction,
+          errorElement:<ErrorElement/>
+
         },
         {
             path:'notifications',
             element:<NotificationPage/>,
-            loader:notificationLoader
+            loader:notificationLoader,
+            errorElement:<ErrorElement/>,
+            errorElement:<ErrorElement/>
+
+
         },
         {
           
