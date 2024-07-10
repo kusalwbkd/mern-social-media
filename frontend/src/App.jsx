@@ -75,7 +75,7 @@ const App = () => {
             element:<NotificationPage/>,
             loader:notificationLoader,
             errorElement:<ErrorElement/>,
-            errorElement:<ErrorElement/>
+            
 
 
         },
